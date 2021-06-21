@@ -51,6 +51,7 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-cucumber'
+  gem 'pry', '0.11.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
