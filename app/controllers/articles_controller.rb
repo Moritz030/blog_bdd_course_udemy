@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   def index
+    @articles = Article.all
   end
   def new
     @article = Article.new
@@ -13,6 +14,9 @@ class ArticlesController < ApplicationController
       flash.now[:danger] = "Article hast not been created"
       render :new
     end
+  end
+  def show
+    
   end
 
   private
