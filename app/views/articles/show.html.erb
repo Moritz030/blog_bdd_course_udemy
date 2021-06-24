@@ -1,0 +1,6 @@
+<div class="bg-secondary rounded m-4">
+  <h1 class="article-detail-title"><%= @article.title %></h1>
+  <%= @article.created_at.strftime("%b %d %Y") %>
+  <p class="article-body"><%= @article.body %></p>
+</div>
+<%= link_to "Back", articles_path, class: "btn btn-default btn-lg", id: "new-article-btn" %>
