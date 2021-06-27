@@ -7,7 +7,7 @@ RSpec.feature "Editing an Article" do
   scenario "A user updates an article" do
     visit "/"
     click_link @article.title
-    click_link "Edit article"
+    click_link "Edit Article"
 
     fill_in "Title", with: "Updated title"
     fill_in "Body", with: "Updated body"
@@ -22,7 +22,7 @@ RSpec.feature "Editing an Article" do
   scenario "A user fails to update an article" do
     visit "/"
     click_link @article.title
-    click_link "Edit article"
+    click_link "Edit Article"
 
     fill_in "Title", with: ""
     fill_in "Body", with: "Updated body"
