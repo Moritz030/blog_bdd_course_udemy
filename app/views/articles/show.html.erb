@@ -5,5 +5,5 @@
   <small>Created by: <%= @article.user.email %></small>
 </div>
 <%= link_to "Back", articles_path, class: "btn btn-default btn-lg" %>
-<%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-default btn-lg" %>
-<%= link_to "Delete Article", article_path(@article), method: "DELETE", data: { confirm: "Are you sure you want to delete the article?"}, class: "btn btn-default btn-lg" %>
+<%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-default btn-lg" if @article.user == current_user %>
+<%= link_to "Delete Article", article_path(@article), method: "DELETE", data: { confirm: "Are you sure you want to delete the article?"}, class: "btn btn-default btn-lg" if @article.user == current_user %>

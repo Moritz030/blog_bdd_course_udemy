@@ -3,11 +3,29 @@ require "rails_helper"
 RSpec.feature "Show Article" do
 
   before do
-    john = User.create!(email: "john@example.com", password: "123456")
-    @article = Article.create(title: "An article", body: "This is an article", user: john)
+    @john = User.create!(email: "john@example.com", password: "123456")
+    @james = User.create!(email: "james@example.com", password: "123456")
+    @article = Article.create(title: "An article", body: "This is an article", user: @john)
   end
-  scenario "A user shows an article" do
+
+  scenario "A user shows an article and is the owner of the article" do
+    login_as(@john)
     user_shows_an_article
+    expect(page).to have_link("Edit Article")
+    expect(page).to have_link("Delete Article")
+  end
+
+  scenario "A user shows an article and is NOT the owner of the article" do
+    login_as(@james)
+    user_shows_an_article
+    expect(page).not_to have_link("Edit Article")
+    expect(page).not_to have_link("Delete Article")
+  end
+
+  scenario "A user shows an article and is NOT signed in" do
+    user_shows_an_article
+    expect(page).not_to have_link("Edit Article")
+    expect(page).not_to have_link("Delete Article")
   end
 
   scenario "A user shows an article and goes back to index page by clicking on back" do
