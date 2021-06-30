@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.feature "Editing an Article" do
   before do
-    @article = Article.create(title:"Article title", body: "Body of Article")
+    john = User.create!(email: "john@example.com", password: "123456")
+    login_as(john)
+    @article = Article.create(title:"Article title", body: "Body of Article", user: john)
   end
   scenario "A user updates an article" do
     visit "/"
